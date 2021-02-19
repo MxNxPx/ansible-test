@@ -1,0 +1,7 @@
+---
+- hosts: all
+  vars: 
+  - msg: "{{P1|default('No Message')}}"
+  tasks:
+  - name: Print P1
+    debug: var=msg
