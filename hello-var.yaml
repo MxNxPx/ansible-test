@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - name: Create variable from command
+      command: "echo New Task, Who Dis?"
+      register: command_output
+    - set_stats:
+      data:
+        variable: {{ P1 }}
