@@ -5,7 +5,7 @@
   tasks:
   - name: Set the variable
     set_fact:
-      greeting: "{{ 'Hello ' + P1[0] + '!' }}"
+      greeting: "{{ 'Hello ' + P1[stdout] + '!' }}"
   - debug:
       var: greeting
 #  - name: Print P1
