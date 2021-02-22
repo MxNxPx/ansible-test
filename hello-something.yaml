@@ -1,12 +1,8 @@
 ---
 - hosts: all
-#  vars: 
-#  - msg: "Hello {{P1.[0]|default('Everyone')}}!"
   tasks:
   - name: Set the variable
     set_fact:
-      greeting: "{{ 'Hello ' + P1.stdout|default('Everyone') + '!' }}"
+      greeting: "{{ 'Hello ' + P1.stdout|OVERRIDE|default('Everyone') + '!' }}"
   - debug:
       var: greeting
-#  - name: Print P1
-#    debug: var=msg
