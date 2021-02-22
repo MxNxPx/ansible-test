@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
     - name: Create variable from command
-      command: echo "New Task, Who Dis?"
+      shell: echo "New Task, Who Dis?"
       register: command_output
     - name: Set var for subsequent job templates
       set_stats:
