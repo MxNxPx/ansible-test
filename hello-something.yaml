@@ -8,5 +8,5 @@
       greeting: "{{ 'Hello ' + P1[0] + '!' }}"
   - debug:
       var: greeting
-  - name: Print P1
-    debug: var=msg
+#  - name: Print P1
+#    debug: var=msg
