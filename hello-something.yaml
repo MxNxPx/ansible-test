@@ -3,6 +3,6 @@
   tasks:
   - name: Set the variable
     set_fact:
-      greeting: "{{ 'Hello ' + P1.stdout|OVERRIDE|default('Everyone') + '!' }}"
+      greeting: "{{ 'Hello ' + P1.stdout|default('Everyone') + '!' }}"
   - debug:
       var: greeting
