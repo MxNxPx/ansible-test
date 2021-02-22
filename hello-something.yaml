@@ -3,5 +3,10 @@
   vars: 
   - msg: "Hello {{P1.stdout_lines|default('Everyone')}}!"
   tasks:
+  - name: Set the variable
+    set_fact:
+      greeting: "{{ 'Hello ' + P1 + '!' }}"
+  - debug:
+      var: greeting
   - name: Print P1
     debug: var=msg
