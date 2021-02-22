@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars: 
-  - msg: "Hello {{P1|default('Everyone')}}!"
+  - msg: "Hello {{P1.stdout_lines|default('Everyone')}}!"
   tasks:
   - name: Print P1
     debug: var=msg
