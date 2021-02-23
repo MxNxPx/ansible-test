@@ -8,5 +8,5 @@
     shell: cat /etc/hello.cow
     register: command_output
 #  - debug: msg="{{ greeting }}"
-  - debug: msg="{{ (greeting + command_output.stdout_lines) }}"
+  - debug: msg="{{ greeting }} {{ command_output.stdout_lines }}"
 
