@@ -10,5 +10,6 @@
   - name: Set full greeting
     set_fact:
       full_greeting: "{{ greeting }} {{ command_output.stdout_lines }}"
-  - debug: msg="{{ full_greeting }}"
+  - debug:
+      var: full_greeting
 
