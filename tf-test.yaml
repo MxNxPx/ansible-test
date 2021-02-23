@@ -7,7 +7,7 @@
   tasks:
   - name: plan
     terraform:
-      project_path: '{{ playbook_dir }}/tf'
+      project_path: 'tf/'
       lock: true
       force_init: yes
     register: tf_plan_output
@@ -18,7 +18,7 @@
     
   - name: apply
     terraform:
-      project_path: ‘{{ playbook_dir }}/tf’
+      project_path: ‘tf/’
       lock: true
       state: present
     register: tf_apply_output
