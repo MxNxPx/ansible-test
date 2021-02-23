@@ -7,7 +7,6 @@
   - name: Give the people what they want
     shell: cat /etc/hello.cow
     register: command_output
-  - debug:
-    var: greeting
-    var: command_output
-  
+  - debug: msg="{{ greeting.stdout }}"
+  - debug: msg="{{ command_output.stdout_lines }}"
+
