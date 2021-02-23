@@ -1,0 +1,28 @@
+---
+- name: Executing Terraform
+  hosts: all
+  gather_facts: false
+  connection: local
+  
+  tasks:
+  - name: plan
+    terraform:
+      project_path: '{{ playbook_dir }}/tf'
+      lock: true
+      force_init: yes
+    register: tf_plan_output
+    
+  - name: Print plan outputs
+    debug:
+      var: tf_plan_output
+    
+  - name: apply
+    terraform:
+      project_path: ‘{{ playbook_dir }}/tf’
+      lock: true
+      state: present
+    register: tf_apply_output
+      
+  - name: Print apply outputs
+    debug:
+      var: tf_apply_output
