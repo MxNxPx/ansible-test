@@ -1,8 +1,8 @@
 ---
 - name: Executing Terraform
-  hosts: all
-  gather_facts: false
+  hosts: localhost
   connection: local
+  gather_facts: false
   
   tasks:
   - name: plan
