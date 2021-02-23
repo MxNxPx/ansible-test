@@ -11,5 +11,5 @@
     set_fact:
       full_greeting: "{{ greeting }} {{ command_output.stdout_lines }}"
   - debug:
-      var: full_greeting
+      var: full_greeting.stdout_lines
 
