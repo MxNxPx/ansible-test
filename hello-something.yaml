@@ -7,9 +7,6 @@
   - name: Give the people what they want
     shell: cat /etc/hello.cow
     register: command_output
-  - name: Set full greeting
-    set_fact:
-      full_greeting: "{{ greeting }} {{ command_output.stdout_lines }}"
-  - debug:
-      var: full_greeting.stdout_lines
+  - debug: msg="{{ greeting.stdout }}"
+  - debug: msg="{{ command_output.stdout_lines }}"
 
