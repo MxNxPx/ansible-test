@@ -4,5 +4,10 @@
   - name: Set the variable
     set_fact:
       greeting: "{{ 'Hello ' + P1.stdout|default('Everyone') + '!' }}"
+  - name: Give the people what they want
+    shell: cat /etc/hello.cow
+    register: command_output
   - debug:
-      var: greeting
+    var: greeting
+    var: command_output
+  
