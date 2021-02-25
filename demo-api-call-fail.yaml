@@ -1,0 +1,15 @@
+- name: Make request to an api
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: api-call
+      uri:
+        method: GET
+        url: "https://www.thisdomainbetternotexistorsomeoneisjustasweirdasme.com/auth/userinfo.email"
+        return_content: yes
+        headers:
+          Accept: application/json
+      register: response
+
+    - debug:
+        msg: "{{ response.content }}"
