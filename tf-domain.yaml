@@ -18,8 +18,8 @@
 
   - name: init
     shell: terraform init
-      args:
-        chdir: '{{ playbook_dir }}/tf-test/'
+    args:
+      chdir: '{{ playbook_dir }}/tf-test/'
     register: tf_init_output
 
   - name: Print init outputs
