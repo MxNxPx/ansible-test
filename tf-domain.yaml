@@ -13,6 +13,10 @@
       ad_client_secret: "{{ lookup('env','AZURE_SECRET') }}"
       azdo_pat: "{{ azdo_pat }}"
       subscription_id: "{{ lookup('env','AZURE_SUBSCRIPTION_ID') }}"
+      ARM_SUBSCRIPTION_ID: "{{ lookup('env','AZURE_SUBSCRIPTION_ID') }}"
+      ARM_TENANT_ID: "{{ lookup('env','AZURE_TENANT') }}"
+      ARM_CLIENT_ID: "{{ lookup('env','AZURE_CLIENT_ID') }}"
+      ARM_CLIENT_SECRET: "{{ lookup('env','AZURE_SECRET') }}"
 
   tasks:
 
