@@ -6,7 +6,7 @@
   
   tasks:
   - name: plan
-    debugger: always
+#    debugger: always
     terraform:
       project_path: '{{ playbook_dir }}/tf/'
       lock: true
@@ -18,7 +18,7 @@
       var: tf_plan_output
     
   - name: apply
-    debugger: always
+#    debugger: always
     terraform:
       project_path: '{{ playbook_dir }}/tf/'
       lock: true
