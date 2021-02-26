@@ -17,7 +17,7 @@
   tasks:
 
   - name: init
-      shell: terraform init
+    shell: terraform init
 #      args:
 #        chdir: tf/
     register: tf_init_output
