@@ -1,0 +1,54 @@
+---
+- name: Executing Terraform
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    az_env:
+      tenant_id: "{{ lookup('env','AZURE_TENANT') }}"
+      client_id: "{{ lookup('env','AZURE_CLIENT_ID') }}"
+      client_secret: "{{ lookup('env','AZURE_SECRET') }}"
+      ad_client_id: "{{ lookup('env','AZURE_CLIENT_ID') }}"
+      ad_client_secret: "{{ lookup('env','AZURE_SECRET') }}"
+      azdo_pat: "{{ azdo_pat }}"
+      subscription_id: "{{ lookup('env','AZURE_SUBSCRIPTION_ID') }}"
+
+  tasks:
+
+  - name: init
+      shell: terraform init
+#      args:
+#        chdir: tf/
+    register: tf_init_output
+
+  - name: Print init outputs
+    debug:
+      var: tf_init_output
+
+  - name: plan
+#    debugger: on_failed
+    environment: "{{ az_env }}"
+    terraform:
+      project_path: '{{ playbook_dir }}/tf/domain/'
+      lock: true
+      force_init: yes
+      variables_file: '{{ playbook_dir }}/tf/domain/domain.tfvars'
+    register: tf_plan_output
+
+  - name: Print plan outputs
+    debug:
+      var: tf_plan_output
+
+  - name: apply
+    environment: "{{ az_env }}"
+    terraform:
+      project_path: '{{ playbook_dir }}/tf/domain/'
+      lock: true
+      state: present
+      variables_file: '{{ playbook_dir }}/tf/domain/domain.tfvars'
+    register: tf_apply_output
+
+  - name: Print apply outputs
+    debug:
+      var: tf_apply_output

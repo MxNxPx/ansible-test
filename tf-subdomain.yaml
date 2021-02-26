@@ -3,28 +3,28 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  
+
   tasks:
   - name: plan
-#    debugger: always
     terraform:
-      project_path: '{{ playbook_dir }}/tf-test/'
+      project_path: '{{ playbook_dir }}/tf/subdomain/'
       lock: true
       force_init: yes
+      variables_file: '{{ playbook_dir }}/tf/subdomain/subdomain.tfvars'
     register: tf_plan_output
-    
+
   - name: Print plan outputs
     debug:
       var: tf_plan_output
-    
+
   - name: apply
-#    debugger: always
     terraform:
-      project_path: '{{ playbook_dir }}/tf-test/'
+      project_path: '{{ playbook_dir }}/tf/subdomain/'
       lock: true
       state: present
+      variables_file: '{{ playbook_dir }}/tf/subdomain/subdomain.tfvars'
     register: tf_apply_output
-      
+
   - name: Print apply outputs
     debug:
       var: tf_apply_output
