@@ -24,7 +24,7 @@
  
   - name: "debug var"
     debug:
-      var: ansible_local.dynamic.greetings
+      var: ansible_local.dynamic.personal_greetings
 
 #  - name: "Print all available facts"
 #    ansible.builtin.debug:
