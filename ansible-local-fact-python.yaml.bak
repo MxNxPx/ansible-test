@@ -23,15 +23,14 @@
        content: |
          #!/usr/bin/python3
          import json
-         data = {
-           foo: "bar",
-           value: 1,
-           nest: {
-             nested_value: "i am nested"
-           }
-         }
-         json_data = json.dumps(data, sort_keys=True)
-         print(json_data)
+         def render_data(data):
+            return json.dumps(data)
+         arbitrary_data = {}
+         arbitrary_data["foobar"] = []
+         arbitrary_data["foobar"].append("foo")
+         if True:
+            arbitrary_data["foobar"].append("bar")
+         print(render_data(arbitrary_data["foobar"]))
 
    - name: "debug var"
      debug: var=ansible_local
