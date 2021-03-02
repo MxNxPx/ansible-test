@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+DATA='{ "parent": { "name": "mommy", "child_stuff": { "children": [{ "child_id": 1, "gender": "female", "name": "child1" }, { "child_id": 2, "gender": "male", "name": "child2" }, { "child_id": 3, "gender": "undecided", "name": "child3" } ] } } }'
+echo "$DATA" | jq .

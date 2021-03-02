@@ -13,10 +13,16 @@
       recurse: yes
       state: "directory"
  
-  - name: "Insert custom fact file active cards"
+  - name: "Load custom parse files fact"
     copy:
-      src: '{{ playbook_dir }}/facts/dynamic.fact'
-      dest: /etc/ansible/facts.d/dynamic.fact
+      src: '{{ playbook_dir }}/facts/file-parse-fact.fact'
+      dest: /etc/ansible/facts.d/file-parse-fact.fact
+      mode: 0755
+
+  - name: "Load custom json fact"
+    copy:
+      src: '{{ playbook_dir }}/facts/json-fact.fact'
+      dest: /etc/ansible/facts.d/json-fact.fact
       mode: 0755
  
   - name: "Re-run setup to use custom facts"
@@ -24,7 +30,8 @@
  
   - name: "debug var"
     debug:
-      var: ansible_local.dynamic.personal_greetings
+      var: ansible_local.file-parse-fact.personal_greetings
+      var: ansible_local.json-fact
 
 #  - name: "Print all available facts"
 #    ansible.builtin.debug:
