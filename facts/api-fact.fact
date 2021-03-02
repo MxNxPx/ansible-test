@@ -1,2 +1,3 @@
 #!/bin/bash
-curl https://www.googleapis.com/auth/userinfo.email
+API_VALUE=$(wget https://www.googleapis.com/auth/userinfo.email)
+echo "\"${API_VALUE}\""
