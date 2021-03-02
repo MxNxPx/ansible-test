@@ -3,13 +3,12 @@
 MAX=10
 RESULT=0
 FACT_NAME="personal_greetings"
+FILE_PREFIX='/etc/hello'
+FILE_SUFFIX='txt'
 
 for i in $(seq $MAX -1 1); do
-  /usr/bin/test -e /etc/hello-${i}.txt
-  if [ $? -eq 0 ]; then
-     RESULT=$(cat /etc/hello-${i})
-     break
+  if [[ -s $FILE_PREFIX-${i}.$FILE_SUFFIX ]]; then
+     RESULT=$(cat $FILE_PREFIX-${i}.$FILE_SUFFIX)
+     echo "${FACT_NAME}=${RESULT}"
   fi
 done
-
-echo "${FACT_NAME}=${RESULT}"
