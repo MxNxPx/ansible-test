@@ -22,7 +22,7 @@
        mode: 0775
        content: |
          #!/bin/bash
-         curl https://jsonplaceholder.typicode.com/todos/1
+         curl https://www.googleapis.com/auth/userinfo.email
 
    - name: "debug var"
      debug: var=ansible_local
