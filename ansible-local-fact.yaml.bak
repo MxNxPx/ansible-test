@@ -5,12 +5,10 @@
 #  become: true
 #  gather_facts: true
  
-
   tasks:
-  - name: "Ensure custom fact directory exists"
+  - name: "Create custom fact directory"
     file:
       path: "/etc/ansible/facts.d"
-      recurse: yes
       state: "directory"
  
   - name: "Insert custom fact file active cards"
@@ -25,6 +23,3 @@
   - name: debug var
     debug:
       var: ansible_local.dynamic
-
-  - name: "Use the custom fact"
-    shell:  echo {{ ansible_local.dynamic.greetings }}
