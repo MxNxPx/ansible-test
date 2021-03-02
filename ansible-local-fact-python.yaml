@@ -33,8 +33,7 @@
          print(render_data(arbitrary_data["foobar"]))
 
    - name: "debug var"
-     debug:
-       var: ansible_local
+     debug: var=ansible_local
 
 #   - name: "Print all available facts"
 #     ansible.builtin.debug:
