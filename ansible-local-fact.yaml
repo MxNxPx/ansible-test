@@ -1,5 +1,5 @@
 ---
-- name: playbook testing
+- name: "local facts with shell script"
   hosts: localhost
   connection: local
 #  become: true
