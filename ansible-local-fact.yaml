@@ -30,8 +30,7 @@
  
   - name: "debug var"
     debug:
-      var: ansible_local.file-parse-fact.personal_greetings
-      var: ansible_local.json-fact
+      var: ansible_local
 
 #  - name: "Print all available facts"
 #    ansible.builtin.debug:
