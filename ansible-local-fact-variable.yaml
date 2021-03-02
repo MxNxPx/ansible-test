@@ -21,7 +21,7 @@
     copy:
       dest: /etc/ansible/facts.d/greetings-var-fact.fact
       content: |
-        {{ var_greeting }}
+        "{{ var_greeting }}"
  
   - name: "Re-run setup to use custom facts"
     setup: ~
