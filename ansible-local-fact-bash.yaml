@@ -16,14 +16,14 @@
        content: '"bar"'
        dest: /etc/ansible/facts.d/foo.fact
 
-  - name: "Insert custom fact file active cards"
-    copy:
-      src: '{{ playbook_dir }}/facts/api-fact.fact'
-      dest: /etc/ansible/facts.d/api-fact.fact
-      mode: 0755
+   - name: "Insert custom fact file active cards"
+     copy:
+       src: '{{ playbook_dir }}/facts/api-fact.fact'
+       dest: /etc/ansible/facts.d/api-fact.fact
+       mode: 0755
 
-  - name: "Re-run setup to use custom facts"
-    setup: ~
+   - name: "Re-run setup to use custom facts"
+     setup: ~
 
    - name: "debug var"
      debug: var=ansible_local
