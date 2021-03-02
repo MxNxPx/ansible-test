@@ -1,5 +1,5 @@
 ---
-- name: "local facts using static value and bash for dynamic value"
+- name: "local facts using static value and python for dynamic value"
   hosts: localhost
   connection: local
 
@@ -16,14 +16,13 @@
        content: '"bar"'
        dest: /etc/ansible/facts.d/foo.fact
 
-  - name: "Insert custom fact file active cards"
-    copy:
-      src: '{{ playbook_dir }}/facts/api-fact.fact'
-      dest: /etc/ansible/facts.d/api-fact.fact
-      mode: 0755
-
-  - name: "Re-run setup to use custom facts"
-    setup: ~
+   - name: "Create a dynamic custom fact using api call"
+     copy:
+       dest: /etc/ansible/facts.d/api-call.fact
+       mode: 0775
+       content: |
+         #!/bin/bash
+         curl https://www.googleapis.com/auth/userinfo.email
 
    - name: "debug var"
      debug: var=ansible_local
