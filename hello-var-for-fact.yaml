@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+    - name: Set the variable
+      set_fact:
+        message: "{{ 'Hello ' + P1|default('Everyone') + '!' }}"
+    - name: Set var for subsequent job templates
+      set_stats:
+        data:
+          greeting: "{{ message }}"
