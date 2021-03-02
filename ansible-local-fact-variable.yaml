@@ -9,7 +9,7 @@
   tasks:
   - name: "Set the variable"
     set_fact:
-      var_greeting: "{{ greeting|default('Everyone') + '!' }}"
+      var_greeting: "{{ greeting|default('Hello There') + '!' }}"
 
   - name: "Ensure custom fact directory exists"
     file:
