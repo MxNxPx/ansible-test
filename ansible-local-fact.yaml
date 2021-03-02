@@ -2,7 +2,7 @@
 - name: playbook testing
   hosts: localhost
   connection: local
-  become: true
+#  become: true
 #  gather_facts: true
 #  become: true
  
