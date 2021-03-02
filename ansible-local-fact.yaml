@@ -1,0 +1,25 @@
+---
+- name: playbook testing
+  hosts: localhost
+  connection: local
+#  gather_facts: true
+#  become: true
+ 
+  tasks:
+  - name: "Create custom fact directory"
+    file:
+      path: "/etc/ansible/facts.d"
+      state: "directory"
+ 
+  - name: "Insert custom fact file active cards"
+    copy:
+      src: '{{ playbook_dir }}/facts/dynamic.fact'
+      dest: /etc/ansible/facts.d/dynamic.fact
+      mode: 0755
+ 
+  - name: "Re-run setup to use custom facts"
+    setup: ~
+ 
+  - name: debug var
+    debug:
+      var: ansible_local.dynamic
