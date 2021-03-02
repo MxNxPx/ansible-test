@@ -1,0 +1,35 @@
+---
+- name: "local facts with variable"
+  hosts: localhost
+  connection: local
+#  become: true
+#  gather_facts: true
+ 
+
+  tasks:
+  - name: "Set the variable"
+    set_fact:
+      var_greeting: "{{ greeting|default('Everyone') + '!' }}"
+
+  - name: "Ensure custom fact directory exists"
+    file:
+      path: "/etc/ansible/facts.d"
+      recurse: yes
+      state: "directory"
+
+  - name: "Load custom greetings fact"
+    copy:
+      dest: /etc/ansible/facts.d/greetings-var-fact.fact
+      content: |
+        {{ var_greeting }}
+ 
+  - name: "Re-run setup to use custom facts"
+    setup: ~
+ 
+  - name: "debug var"
+    debug:
+      var: ansible_local
+
+#  - name: "Print all available facts"
+#    ansible.builtin.debug:
+#      var: ansible_facts
