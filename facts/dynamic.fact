@@ -9,6 +9,6 @@ FILE_SUFFIX='txt'
 for i in $(seq $MAX -1 1); do
   if [[ -s $FILE_PREFIX-${i}.$FILE_SUFFIX ]]; then
      RESULT=$(cat $FILE_PREFIX-${i}.$FILE_SUFFIX)
-     echo "${FACT_NAME}=${RESULT}"
+     echo "{ \"${FACT_NAME}\": \"${RESULT}\" }"
   fi
 done
