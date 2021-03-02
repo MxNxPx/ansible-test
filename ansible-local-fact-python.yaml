@@ -32,9 +32,6 @@
             arbitrary_data["foobar"].append("bar")
          print(render_data(arbitrary_data["foobar"]))
 
-   - name: "Re-run setup to use custom facts"
-     setup: ~
- 
    - name: "debug var"
      debug:
        var: ansible_local
