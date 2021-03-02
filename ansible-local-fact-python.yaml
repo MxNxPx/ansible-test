@@ -1,6 +1,5 @@
 ---
 - name: "local facts using static value and python for dynamic value"
-  become: true
   hosts: localhost
   connection: local
 
