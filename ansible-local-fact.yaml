@@ -22,9 +22,10 @@
   - name: "Re-run setup to use custom facts"
     setup: ~
  
-  - name: debug var
+  - name: "debug var"
     debug:
       var: ansible_local.dynamic
 
-  - name: "Use the custom fact"
-    shell:  echo {{ ansible_local.dynamic.greetings }}
+  - name: "Print all available facts"
+    ansible.builtin.debug:
+      var: ansible_facts
