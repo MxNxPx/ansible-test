@@ -16,22 +16,13 @@
        content: '"bar"'
        dest: /etc/ansible/facts.d/foo.fact
 
-   - name: Create a dynamic custom fact foobar
+   - name: "Create a dynamic custom fact using api call"
      copy:
-       dest: /etc/ansible/facts.d/foobar.fact
+       dest: /etc/ansible/facts.d/api-call.fact
        mode: 0775
        content: |
-         #!/usr/bin/python3
-         import json
-         data = {
-           foo: "bar",
-           value: 1,
-           nest: {
-             nested_value: "i am nested"
-           }
-         }
-         json_data = json.dumps(data, sort_keys=True)
-         print(json_data)
+         #!/bin/bash
+         curl https://jsonplaceholder.typicode.com/todos/1
 
    - name: "debug var"
      debug: var=ansible_local
