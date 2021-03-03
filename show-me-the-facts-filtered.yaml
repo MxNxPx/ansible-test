@@ -16,9 +16,9 @@
       gather_subset:
         - '!all'
         - '!min'
-        - 'greetings-var-fact'
+        - 'facter'
 
   - name: "debug facts"
     debug: 
-      msg: "{{ ansible_local.foo }}"
+      msg: "{{ ansible_local }}"
 
