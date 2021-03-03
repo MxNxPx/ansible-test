@@ -1,0 +1,20 @@
+---
+- name: "show me the local facts"
+  hosts: localhost
+  connection: local
+
+  tasks:
+  - name: "Ensure custom fact directory exists"
+    file:
+      path: "/etc/ansible/facts.d"
+      recurse: yes
+      state: "directory"
+
+  - name: "Re-run setup to use custom facts"
+    setup: 
+      filter: ansible_local.greetings*
+
+  - name: "debug facts"
+    debug:
+      msg: "{{ ansible_facts['ansible_local'] }}"
+
