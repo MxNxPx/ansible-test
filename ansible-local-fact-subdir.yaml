@@ -1,0 +1,27 @@
+---
+- name: "local facts using static value and bash for dynamic value"
+  hosts: localhost
+  connection: local
+
+  tasks:
+
+   - name: "Create fact directory"
+     file:
+       path: "/etc/ansible/facts.d/fact-subdir"
+       recurse: yes
+       state: "directory"
+
+   - name: "Create a static custom fact foo"
+     copy:
+       content: '"subdir-fact-data"'
+       dest: /etc/ansible/facts.d/fact-subdir/subdir-fact.fact
+
+   - name: "Re-run setup to use custom facts"
+     setup: ~
+
+   - name: "debug var"
+     debug: var=ansible_local
+
+#   - name: "Print all available facts"
+#     ansible.builtin.debug:
+#       var: ansible_facts
