@@ -13,6 +13,10 @@
   - name: "Re-run setup to use custom facts"
     setup: 
       filter: ansible_local.greetings*
+      gather_subset:
+        - '!all'
+        - '!min'
+        - 'greetings-var-fact'
 
   - name: "debug facts"
     debug: 
