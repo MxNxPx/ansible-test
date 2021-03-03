@@ -12,13 +12,13 @@
 
   - name: "Re-run setup to use custom facts"
     setup: 
-      filter: ansible_local
-      gather_subset:
-        - '!all'
-        - '!min'
-        - 'facter'
+      filter: greetings*
+#      gather_subset:
+#        - '!all'
+#        - '!min'
+#        - 'facter'
 
   - name: "debug facts"
     debug: 
-      msg: "{{ ansible_facts }}"
+      msg: "{{ ansible_local }}"
 
