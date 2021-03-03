@@ -12,7 +12,7 @@
 
   - name: "Re-run setup to use custom facts"
     setup: 
-      filter: ansible_local.greetings*
+      filter: ansible_local
       gather_subset:
         - '!all'
         - '!min'
