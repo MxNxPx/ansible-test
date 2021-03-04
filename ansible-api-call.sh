@@ -2,7 +2,7 @@
 
 all_args=("$@")
 job_type=$1                     #example: workflow_job_templates | job_templates
-job_id=$2                       #example: 40
+job_id=$2                       #example: 40 | 11
 #json_data=("${all_args[@]:2}") #example: "{"P1": "Colgan"}"
 json_data=./ansible-api-call-data.json
 
