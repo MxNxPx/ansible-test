@@ -3,8 +3,12 @@
 all_args=("$@")
 job_type=$1                     #example: workflow_job_templates | job_templates
 job_id=$2                       #example: 40 | 11
-#json_data=("${all_args[@]:2}") #example: "{"extra_vars": {"P1": "Colgan"}}"
 json_data=./ansible-api-call-data.json
+
+#json_data=("${all_args[@]:2}") #example: "{"extra_vars": {"P1": "Colgan"}}"
+#example usage:
+#  bash ./ansible-api-call.sh job_templates 11
+#  bash ./ansible-api-call.sh workflow_job_templates 40
 
 tower_api=https://hdc-lnx-vs-0040.int.8451.com/api/v2
 token_file=./ansible-api-token.json
